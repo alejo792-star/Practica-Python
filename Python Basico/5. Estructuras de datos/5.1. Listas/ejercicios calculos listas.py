@@ -6,3 +6,5 @@ sumador = 0
 for uwu in range( len(edades) ):
     sumador = sumador +   edades[uwu]
 print(sumador)
+
+
