@@ -81,7 +81,7 @@ def ejecutar_filtrar_creadores_por_categoria(c1: dict, c2: dict, c3: dict, c4: d
     En cualquier otro caso, se debe mostrar:
     "Creadores de contenido de la categoría {categoria}: {creadores}"
     """
-    categoria = str(input("ingrese categoria"))
+    categoria = str(input("ingrese categoria: "))
     resultado = tk.filtrar_creadores_por_categoria(categoria,c1,c2,c3,c4)
     print(resultado)
 
@@ -97,8 +97,9 @@ def ejecutar_calcular_promedio_vistas(c1: dict, c2: dict, c3: dict, c4: dict) ->
     c4 (dict): Diccionario con los datos del creador 4.
 
     """
-    # TODO11: Implemente la función tal y como se describe en la documentación.
-    pass
+    promedio = tk.calcular_promedio_vistas(c1,c2,c3,c4)
+    print(f"El promedio tatal de vistas es: {promedio}")
+
 
 
 def ejecutar_filtrar_creadores_por_vistas(c1: dict, c2: dict, c3: dict, c4: dict) -> None:
@@ -112,10 +113,10 @@ def ejecutar_filtrar_creadores_por_vistas(c1: dict, c2: dict, c3: dict, c4: dict
     c4 (dict): Diccionario con los datos del creador 4.
 
     """
-    # TODO12: Implemente la función tal y como se describe en la documentación.
-    #        Solicite al usuario el valor requerido para invocar 
-    #        correctamente a la función de la lógica.
-    pass
+    minimo_vistas =int(input("Ingrese una cantidad: "))
+    resultado = tk.filtrar_creadores_por_vistas(minimo_vistas,c1,c2,c3,c4)
+    print(resultado)
+
 
 
 def ejecutar_calcular_rating_creador(c1: dict, c2: dict, c3: dict, c4: dict) -> None:
@@ -129,11 +130,15 @@ def ejecutar_calcular_rating_creador(c1: dict, c2: dict, c3: dict, c4: dict) -> 
     c4 (dict): Diccionario con los datos del creador 4.
 
     """
-    # TODO13: Implemente la función tal y como se describe en la documentación.
-    #        Solicite al usuario el valor requerido para invocar 
-    #        correctamente a la función de la lógica.
-    # TIP: En esta función se invoca a dos funciones de la lógica.
-    pass
+    nombre = str(input("Ingrese el nombre del creador."))
+    creador = tk.buscar_creador_por_nombre(nombre,c1,c2,c3,c4)
+
+    if creador is None:
+        print("creador no encontrado")
+    else:
+        rating = tk.calcular_rating_creador(creador)
+        print(rating)
+        
 
 
 def ejecutar_buscar_creador_favorito(c1: dict, c2: dict, c3: dict, c4: dict) -> None:

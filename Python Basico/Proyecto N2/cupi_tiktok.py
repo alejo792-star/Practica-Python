@@ -101,15 +101,24 @@ def filtrar_creadores_por_categoria(categoria: str, c1: dict, c2: dict, c3: dict
 
     resultado = ""
     categoriaa = categoria.lower()
-    c1low = c1["categorias"].lower()
-    c2low = c2["categorias"].lower()
-    c3low = c3["categorias"].lower()
-    c4low = c4["categorias"].lower()
 
-    if categoriaa == c1low:
-        resultado = resultado + c1["nombre"]
-        return resultado
+    if categoriaa in c1["categorias"].lower():
+        resultado += c1["nombre"] + ", "
 
+    if categoriaa in c2["categorias"].lower():
+        resultado += c2["nombre"] + ", "
+
+    if categoriaa in c3["categorias"].lower():
+        resultado += c3["nombre"] + ", "
+
+    if categoriaa in c4["categorias"].lower():
+        resultado += c4["nombre"] + ", "
+    
+    if resultado == "":
+        return None
+    return resultado[:-2]
+
+    
 
 
 
@@ -127,8 +136,8 @@ def calcular_promedio_vistas(c1: dict, c2: dict, c3: dict, c4: dict) -> float:
         float: Promedio de vistas de todos los creadores de contenido dados,
             redondeado a dos cifras decimales.
     """
-    # TODO3: Implemente la función tal y como se describe en la documentación.
-    pass
+    promedio = round(((c1["vistas"] + c2["vistas"] + c3["vistas"] + c4["vistas"])/4),2)
+    return promedio
 
 
 def filtrar_creadores_por_vistas(minimo_vistas: int, c1: dict, c2: dict, c3: dict, c4: dict) -> str:
@@ -147,8 +156,18 @@ def filtrar_creadores_por_vistas(minimo_vistas: int, c1: dict, c2: dict, c3: dic
             de vistas ingresado, separados por comas. Retorna el mensaje "Ninguno"
             si ningún creador de contenido supera el umbral.
     """
-    # TODO4: Implemente la función tal y como se describe en la documentación.
-    pass
+    resultado = ""
+    if c1["vistas"] > minimo_vistas:
+        resultado+= c1["nombre"] + ","
+    if c2["vistas"] > minimo_vistas:
+        resultado += c2["nombre"] + "," 
+    if c3["vistas"] > minimo_vistas:
+        resultado += c3["nombre"] + ","
+    if c4["vistas"] > minimo_vistas:
+        resultado += c4["nombre"] + ","
+    if resultado == "":
+        return "Ninguno"
+    return resultado[:-1]
 
 
 def calcular_rating_creador(creador: dict) -> float:
@@ -163,8 +182,18 @@ def calcular_rating_creador(creador: dict) -> float:
         float: El rating del creador de contenido, redondeado a dos cifras
             decimales. Este valor se encuentra entre 0 y 100.
     """
-    # TODO5: Implemente la función tal y como se describe en la documentación.
-    pass
+    
+    likes = creador["likes"]
+    seguidores = creador["seguidores"]
+    vistas = creador["vistas"]
+
+    if seguidores == 0:
+        return 0.0
+    rating = ((likes + vistas) / seguidores) * 100
+    return round(rating, 2)
+    
+
+    
 
 
 def calcular_puntaje_afinidad(creador: dict, categoria: str, minimo_rating: float, pais: str) -> float:
@@ -183,8 +212,7 @@ def calcular_puntaje_afinidad(creador: dict, categoria: str, minimo_rating: floa
         float: El puntaje de afinidad que tiene un creador con un usuario,
             redondeado a dos cifras decimales.
     """
-    # TODO6: Implemente la función tal y como se describe en la documentación.
-    pass
+    
 
 
 def buscar_creador_favorito(categoria: str, rating: float, pais: str, c1: dict, c2: dict, c3: dict, c4: dict) -> str:

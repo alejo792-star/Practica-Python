@@ -8,7 +8,6 @@ promedio = 0
 for uwu in range( len(edades) ):
     sumador = sumador +   edades[uwu]
 promedio = sumador/len(edades)
-sumador =sumador
 
 almacenador =0
 for i in range(len(edades)):
