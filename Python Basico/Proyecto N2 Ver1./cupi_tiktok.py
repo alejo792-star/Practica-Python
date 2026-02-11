@@ -186,13 +186,14 @@ def calcular_rating_creador(creador: dict) -> float:
     likes = creador["likes"]
     seguidores = creador["seguidores"]
     vistas = creador["vistas"]
+    smax = 600000
+    lmax = 100000000
+    vmax = 100000000
 
     if seguidores == 0:
         return 0.0
-    rating = ((likes + vistas) / seguidores) * 100
+    rating = (((seguidores/smax) * 0.5) + ((likes/lmax)*0.3) + ((vistas/vmax)) * 0.2 )
     return round(rating, 2)
-    
-
     
 
 
@@ -212,7 +213,8 @@ def calcular_puntaje_afinidad(creador: dict, categoria: str, minimo_rating: floa
         float: El puntaje de afinidad que tiene un creador con un usuario,
             redondeado a dos cifras decimales.
     """
-    
+
+
 
 
 def buscar_creador_favorito(categoria: str, rating: float, pais: str, c1: dict, c2: dict, c3: dict, c4: dict) -> str:

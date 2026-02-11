@@ -6,10 +6,12 @@
 
 
 
-personas = { "Carlos":32 , "Stefania":45 , "Camilo":65 }
+datos = { "Carlos":32 , "Stefania":45 , "Camilo":65 }
 
 
 
-suma_edad = personas["Carlos"] + personas["Stefania"] + personas["Camilo"]
+suma_edad = datos["Carlos"] + datos["Stefania"] + datos["Camilo"]
+
 prom = suma_edad / 3
+
 print(prom)

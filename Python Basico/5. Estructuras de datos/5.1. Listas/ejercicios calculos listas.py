@@ -5,8 +5,8 @@ edades = [23,43,45,213,34]
 sumador = 0
 promedio = 0
 
-for uwu in range( len(edades) ):
-    sumador = sumador +   edades[uwu]
+for i in range( len(edades) ):
+    sumador = sumador +   edades[i]
 promedio = sumador/len(edades)
 
 almacenador =0
@@ -15,7 +15,7 @@ for i in range(len(edades)):
     almacenador = almacenador + res1
 
 almacenador=(len(edades) - 1/4)* almacenador
-resutadof =math.sqrt(almacenador)
+desviacion_estandar =math.sqrt(almacenador)
 
 print(sumador)
 
